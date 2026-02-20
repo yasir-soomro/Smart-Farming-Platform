@@ -14,12 +14,10 @@ import { Pricing } from './components/Pricing';
 import { ROICalculator } from './components/ROICalculator';
 import { CTABanner } from './components/CTABanner';
 import { Footer } from './components/Footer';
-import { ThreeBackground } from './components/ThreeBackground';
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col relative">
-      <ThreeBackground />
       <Navbar />
       <main className="flex-grow">
         <Hero />

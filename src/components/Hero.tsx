@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Play, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { Hero3D } from './Hero3D';
+import { Typewriter } from './Typewriter';
 
 export function Hero() {
   return (
@@ -9,32 +11,16 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-sky via-white to-sky/40" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(46,125,50,0.15),transparent_50%)]" />
+        <Hero3D />
         <img
           src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2000"
           alt="Wheat Field"
-          className="w-full h-full object-cover opacity-[0.07] mix-blend-overlay"
+          className="w-full h-full object-cover opacity-[0.05] mix-blend-overlay absolute inset-0 z-10 pointer-events-none"
           referrerPolicy="no-referrer"
-        />
-        {/* Animated blobs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px]"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -44,8 +30,9 @@ export function Hero() {
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full">
               The Future of Agriculture is Here
             </span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-neutral-dark mb-8 leading-[0.9] text-balance">
-              Smart Farming for a <span className="text-primary">Sustainable</span> Tomorrow
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-neutral-dark mb-8 leading-[1.1] text-balance">
+              Smart Farming for a <br className="hidden md:block" />
+              <Typewriter /> Tomorrow
             </h1>
             <p className="text-xl md:text-2xl text-neutral mb-10 max-w-3xl mx-auto leading-relaxed">
               AI-powered insights, precision tools, and real-time data — helping farmers grow more with less while protecting our planet.
