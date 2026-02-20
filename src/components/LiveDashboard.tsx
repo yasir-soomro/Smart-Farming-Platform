@@ -81,6 +81,14 @@ export function LiveDashboard() {
     { label: 'Solar Rad', value: '840 W/m²', icon: <Sun className="text-accent size-8" />, bg: 'bg-accent/10' },
   ];
 
+  const weatherForecast = [
+    { day: 'Mon', temp: 24, icon: <Sun className="size-4 text-accent" /> },
+    { day: 'Tue', temp: 22, icon: <CloudSun className="size-4 text-blue-400" /> },
+    { day: 'Wed', temp: 25, icon: <Sun className="size-4 text-accent" /> },
+    { day: 'Thu', temp: 21, icon: <CloudSun className="size-4 text-blue-400" /> },
+    { day: 'Fri', temp: 23, icon: <Sun className="size-4 text-accent" /> },
+  ];
+
   return (
     <section id="dashboard" className="py-24 bg-neutral-light/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,6 +182,49 @@ export function LiveDashboard() {
                     />
                   </AreaChart>
                 </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Weather & Soil Detailed Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-neutral-light">
+                <h4 className="text-sm font-bold text-neutral uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <CloudSun size={18} className="text-blue-500" /> 5-Day Forecast
+                </h4>
+                <div className="flex justify-between items-center">
+                  {weatherForecast.map((day, i) => (
+                    <div key={i} className="flex flex-col items-center gap-2">
+                      <span className="text-xs font-bold text-neutral">{day.day}</span>
+                      <div className="p-2 bg-neutral-light/50 rounded-xl">
+                        {day.icon}
+                      </div>
+                      <span className="text-sm font-black text-neutral-dark">{day.temp}°</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-neutral-light">
+                <h4 className="text-sm font-bold text-neutral uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <Droplets size={18} className="text-blue-500" /> Soil Composition
+                </h4>
+                <div className="space-y-4">
+                  {[
+                    { label: 'Nitrogen', value: 78, color: 'bg-primary' },
+                    { label: 'Phosphorus', value: 62, color: 'bg-accent' },
+                    { label: 'Potassium', value: 45, color: 'bg-blue-500' },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider mb-1">
+                        <span>{item.label}</span>
+                        <span>{item.value}%</span>
+                      </div>
+                      <div className="w-full bg-neutral-light h-1.5 rounded-full overflow-hidden">
+                        <div className={`h-full ${item.color}`} style={{ width: `${item.value}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
